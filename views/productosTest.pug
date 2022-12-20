@@ -6,17 +6,19 @@ html
         script(src="https://code.jquery.com/jquery-3.5.1.min.js")
 
     body
-                    
+    
         div(class="products")
             h1(style="color:black")="Otros productos"
 
-        a(style={color:"purple", "text-decoration":'none', "margin-right":'1em'} href="http://localhost:8080/api/")
+        a(style={color:"purple", "text-decoration":'none', "margin-right":'1em'} href="/api/")
            span Agregar nuevo producto
 
-        a(style={color:"purple", "text-decoration":'none'} href="http://localhost:8080/api/productos")
+        a(style={color:"purple", "text-decoration":'none'} href="/api/productos")
             span Productos de lista
-           
-           
+                    
+        div(class="products")
+            h1(style="color:black")="Productos de prueba"
+
             div(id="cardRow")
 
                 if products

@@ -5,44 +5,47 @@ html
         link(rel="stylesheet", href="/styles.css")
         script(src="/socket.io/socket.io.js")
         script(src="https://code.jquery.com/jquery-3.5.1.min.js")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js")
         script(src="https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.min.js")
 
     body 
         case username
+
             when undefined
                 div(class='log')
-                    form(method="POST" action="http://localhost:8080/api/login")
+                    form(method="POST" action="/api/login")
                         input(type="text" name="username" placeholder="Usuario" required)
                         input(type="password" name="password" placeholder="Contraseña" required)
                         div(class="logDiv")
-                            input(type="button" class="button" onclick="location.href='http://localhost:8080/api/signup';" value="Crear usuario")
+                            input(type="button" class="button" onclick="location.href='/api/signup';" value="Crear usuario")
                             input(type="submit" class="submit" value="Entrar")
             
             when 'wip'
                 div(class='log')
-                    form(method="POST" action="http://localhost:8080/api/signup")
+                    form(method="POST" action="/api/signup")
                         input(type="text" name="username" placeholder="Nuevo usuario" required)
                         input(type="password" name="password" placeholder="Nueva contraseña" required)
                         div(class="logDiv")
-                            input(type="button" class="button" onclick="location.href='http://localhost:8080/api/login';" value="Tengo usuario")
+                            input(type="button" class="button" onclick="location.href='/api/login';" value="Tengo un usuario")
                             input(type="submit" class="submit" value="Registrarse")
 
             default
+
                 if form
                     h2(style="color:black")= `¡Hola, ${username} 💟!`
-                    a(style={color:"purple"} href="http://localhost:8080/api/logout")
+                    a(style={color:"purple"} href="/api/logout")
                        span Desconectarse 
                 
                 else
-                    a(href="http://localhost:8080/api/")
-                    
+                    a(href="/api/")
+
 
                 div(class="main")
                     if form
                         div
                             div(class="formBox")
-                                h2="Registrar nuevo producto"
-                                
+                                h3="Registrar nuevo producto"
+
                                 form(id="productForm")
                                     input(type="text" name="title" placeholder="Título" id="title" required)
                                     input(type="text" name="thumbnail" placeholder="Foto (url)" id="thumbnail")
@@ -53,6 +56,7 @@ html
 
 
                             div(class="chatBox")
+
                                 form(id="chat")
                                     div(class="chatForm")
                                         input(type="text" placeholder="Nombre" id="name" required)
@@ -63,8 +67,11 @@ html
                                         input(type="text" placeholder="Avatar" id="avatar")
                                         input(type="text" placeholder="E-mail" id="email" required)
 
+
                                     hr
+
                                     ul(id="chat-messages")
+
                                     hr
                                     
                                     div(class="chatDiv")
